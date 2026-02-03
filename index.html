@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DaiAnime</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png" href="DaiAnime.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+   <header class="page-header">
+<h1>
+  <a href="index.html">
+    <img src="DaiAnime.jpeg" alt="Logo de DaiAnime" style="height:40px; vertical-align:middle;">
+    DaiAnime
+  </a>
+</h1>   
+<!-- El Menú -->
+ <nav class="main-menu">
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="Buscar.html">Buscar</a></li>            
+              <li class="user-menu-item">
+                <a href="#" class="user-link" id="userName">Usuario</a>
+                <!-- El SubMenú -->
+                <ul class="user-dropdown">
+                    <li><a href="Mi_lista.html"> Mi Lista</a></li>
+                    <li class="logout-separator">
+                        <a href="#" id="logout">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+ <h3 class="h3">Nuevos Animes</h3>
+ <section class="anime-list">  
+  <div class="anime-card">
+    <img src="naruto.jpg" alt="Naruto" class="anime-img">
+    <h3 class="anime-title">Naruto</h3>
+    <p class="anime-genre">Acción, Aventura</p>
+    <a href="ver_naruto.html" class="watch-btn">Ver Anime</a>
+  </div> 
+
+  <div class="anime-card">
+    <img src="https://pics.filmaffinity.com/one_piece-647985949-msmall.jpg" alt="One Piece" class="anime-img">
+    <h3 class="anime-title">One Piece</h3>
+    <p class="anime-genre">Aventura, Comedia</p>
+    <a href="ver_onepiece.html" class="watch-btn">Ver Anime</a>
+  </div>
+
+  <!-- tarjetas según Cuanto queramos añadir -->
+</section>
+
+<h4 class="h3">Nuevas Temporadas</h4>
+
+<section class="anime-list">
+  <div class="anime-card">
+    <img src="naruto.jpg" alt="Naruto" class="anime-img">
+    <h3 class="anime-title">Naruto</h3>
+    <p class="anime-genre">Acción, Aventura</p>
+    <a href="https://www3.animeflv.net/anime/naruto-shippuden-hd" class="watch-btn">Ver Anime</a>
+  </div>
+
+  <div class="anime-card">
+    <img src="onepiece.jpg" alt="One Piece" class="anime-img">
+    <h3 class="anime-title">One Piece</h3>
+    <p class="anime-genre">Aventura, Comedia</p>
+    <a href="ver_onepiece.html" class="watch-btn">Ver Anime</a>
+  </div>
+
+</section>
+
+    <footer>
+    <p>© 2026 DaiAnime. Todos los derechos reservados.</p>
+    <div class="social-links">  
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    </footer>
+
+     <button type="button" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Ir arriba">
+   <i class="fas fa-arrow-up"></i>
+ </button>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    // 🔐 PROTEGER PÁGINA
+    if (localStorage.getItem("logueado") !== "true") {
+        window.location.href = "iniciar_sesion.html";
+        return;
+    }
+
+    // 👤 MOSTRAR USUARIO
+    const userName = document.getElementById("userName");
+    const usuario = localStorage.getItem("usuario");
+    if (userName && usuario) {
+        userName.textContent = usuario;
+    }
+
+    // 🚪 CERRAR SESIÓN
+    const logoutBtn = document.getElementById("logout");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.removeItem("logueado");
+            localStorage.removeItem("usuario");
+            window.location.href = "iniciar_sesion.html";
+        });
+    }
+
+});
+</script>
+
+
+
+</html>

@@ -1,0 +1,408 @@
+/* ====================================
+   🔹 Variables de color
+==================================== */
+:root {
+    --primary-bg: #111111;      /* Fondo negro */
+    --secondary-bg: #1a1a1a;    /* Fondo gris oscuro */
+    --highlight-color: #e74c3c; /* Rojo para resaltar */
+    --text-color: #ffffff;      /* Blanco para el texto */
+    --light-text: #ddd;
+    --success-color: #4CAF50;   /* Verde para éxito */
+    --accent-color: #e74c3c;    /* Rojo acento */
+}
+
+/* ====================================
+   🔹 Estilos generales
+==================================== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+/* Quitar subrayado de todos los enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ====================================
+   🔹 Header y Logo
+==================================== */
+.page-header {
+    background-color: var(--secondary-bg);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+}
+
+.page-header h1 {
+    margin: 0;
+    color: var(--highlight-color);
+}
+
+.page-header h1 a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--highlight-color);
+}
+
+/* ====================================
+   🔹 Menú principal
+==================================== */
+.main-menu {
+    background-color: var(--secondary-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Menú a la derecha */
+    align-items: center;
+    gap: 15px;
+}
+
+.main-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--highlight-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-menu li a:hover {
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+}
+
+/* Menú responsive */
+@media (max-width: 768px) {
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-menu li {
+        margin: 5px 0;
+    }
+}
+
+/* ====================================
+   🔹 Submenú usuario
+==================================== */
+.user-menu-item {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--secondary-bg);
+    border-radius: 6px;
+    min-width: 180px;
+    padding: 5px 0;
+    margin-top: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.25s ease;
+}
+
+.user-menu-item:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown li a {
+    display: block;
+    padding: 10px 18px;
+    color: var(--highlight-color);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-dropdown li a:hover {
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+}
+
+.logout-separator a {
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ====================================
+   🔹 Footer
+==================================== */
+footer {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 25px 0;
+    border-top: 1px solid #444;
+}
+
+/* ====================================
+   🔹 Back to top
+==================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 12px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:hover {
+    background-color: #e63232;
+    transform: translateY(-2px);
+}
+
+.back-to-top:focus {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+}
+
+/* ====================================
+   🔹 Smooth scroll
+==================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Asegúrate de tener el CDN de Font Awesome cargado en tu HTML */
+/* Estilos para los iconos de redes sociales */
+.social-links {
+    display: flex;
+    justify-content: center;  /* Centra los iconos */
+    align-items: center;
+    padding: 10px 0;  /* Espaciado dentro del footer */
+}
+
+.social-links a {
+    color: var(--highlight-color);  /* Color de los iconos */
+    margin: 0 15px;  /* Espaciado entre iconos */
+    font-size: 30px;  /* Tamaño de los iconos */
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--text-color);  /* Cambio de color al pasar el ratón */
+}
+
+.h3 {
+    margin: 0;
+    color: var(--highlight-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+
+.anime-list {
+    display: grid;
+    /* cada cajita mínima 120px, se ajusta hasta 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px; /* espacio entre cajitas */
+    padding: 20px;
+}
+
+
+/* ====================================
+   🔹 ordenadores Hasta 1024px
+==================================== */
+
+@media (min-width: 1024px) {
+
+    .anime-list {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+    }
+
+    .anime-img {
+        height: 220px;
+    }
+
+    .main-menu ul {
+        justify-content: flex-end;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
+
+
+/* ====================================
+   🔹 Moviles Hasta 767px
+==================================== */
+@media (max-width: 767px) {
+
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anime-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .anime-img {
+        height: 140px;
+    }
+
+    .anime-title {
+        font-size: 0.8rem;
+    }
+
+    .watch-btn {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px;
+    }
+}
+
+/* ====================================
+   🔹 tablets Desde 768px hasta 1023px
+==================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .anime-list {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+   .anime-card {
+    width: 160px;
+}
+
+.anime-img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+
+
+    .main-menu ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    body {
+        font-size: 15px;
+    }
+}
+/* ====================================
+ Card estilo 
+==================================== */
+
+.anime-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.anime-card {
+    background-color: var(--secondary-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.anime-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+}
+
+/* Imagen POSTER REAL */
+.anime-img {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* 🔑 clave AnimeFLV */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+/* Hover imagen */
+.anime-card:hover .anime-img {
+    transform: scale(1.05);
+    filter: brightness(0.75);
+}
+
+/* Título */
+.anime-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 8px 6px 0;
+}
+
+/* Género */
+.anime-genre {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-bottom: 8px;
+}
+
+/* Botón */
+.watch-btn {
+    display: block;
+    margin: 0 10px 12px;
+    padding: 8px 0;
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.watch-btn:hover {
+    background-color: #e63232;
+}

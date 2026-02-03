@@ -1,0 +1,349 @@
+/* =========================
+   VARIABLES DE COLOR
+========================= */
+:root {
+     --primary-bg: #111111;  /* Fondo negro */
+    --secondary-bg: #1a1a1a; /* Fondo gris oscuro para algunas secciones */
+    --highlight-color: #e74c3c; /* Rojo para resaltar */
+    --text-color: #ffffff;    /* Blanco para el texto */
+    --light-text: #ddd;
+    --success-color: #4CAF50; /* Verde para guardar/éxito */
+    --accent-color: #e74c3c;  /* Rojo para acento */
+}
+
+/* =========================
+   RESET BÁSICO
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--primary-bg);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* =========================
+   MENÚ SUPERIOR
+========================= */
+.main-menu {
+    background-color: var(--secondary-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 30px;
+    display: flex;
+    justify-content: flex-end; /* 👉 A LA DERECHA */
+    align-items: center;
+}
+
+
+.main-menu li {
+    margin: 0 10px; /* Espaciado entre los enlaces */
+}
+
+.main-menu li a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--highlight-color); /* Rojo para los enlaces */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.main-menu li a:hover {
+    background-color: var(--highlight-color); /* Rojo para hover */
+    color: var(--primary-bg); /* Negro para el texto cuando el enlace está en hover */
+}
+
+/* Hacer que el menú sea más responsive */
+@media (max-width: 768px) {
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-menu li {
+        margin: 5px 0;
+    }
+}
+
+
+
+
+/* =========================
+   CONTENEDOR FORMULARIO
+========================= */
+.form-container {
+    width: 100%;
+    max-width: 420px;
+    margin: auto;
+    background: var(--secondary-bg);
+    border-radius: 14px;
+    padding: 40px 35px 45px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.85);
+    position: relative;
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo embed {
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.7));
+}
+
+/* =========================
+   FORMULARIOS
+========================= */
+.ajax-form {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.ajax-form.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ajax-form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* =========================
+   INPUTS
+========================= */
+.ajax-form input {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: var(--primary-bg);
+    color: var(--text-color);
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.ajax-form input::placeholder {
+    color: #888;
+}
+
+.ajax-form input:focus {
+    outline: none;
+    border-color: var(--highlight-color);
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.25);
+}
+
+/* =========================
+   LINKS FORM
+========================= */
+.ajax-form a {
+    color: var(--highlight-color);
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.ajax-form a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.buttons button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+
+/* Botón secundario */
+.buttons button[type="button"] {
+    background: transparent;
+    color: var(--light-text);
+    border: 1px solid #444;
+}
+
+.buttons button[type="button"]:hover {
+    background: #222;
+}
+
+/* Botón principal */
+.buttons button[type="submit"] {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.buttons button[type="submit"]:hover {
+    background: #cf3f31;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(231, 76, 60, 0.4);
+}
+
+/* =========================
+   RECAPTCHA
+========================= */
+.reCaptcha {
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* =========================
+   TEXTO LEGAL
+========================= */
+.reCaptcha div {
+    margin-top: 10px;
+    color: var(--light-text);
+}
+
+.reCaptcha a {
+    color: var(--highlight-color);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 500px) {
+    .form-container {
+        margin: 20px;
+        padding: 30px 25px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+}
+
+/* ====================================
+   🔹 ordenadores Hasta 1024px
+==================================== */
+
+@media (min-width: 1024px) {
+
+    .anime-list {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+    }
+
+    .anime-img {
+        height: 220px;
+    }
+
+    .main-menu ul {
+        justify-content: flex-end;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
+
+
+/* ====================================
+   🔹 Moviles Hasta 767px
+==================================== */
+@media (max-width: 767px) {
+
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anime-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .anime-img {
+        height: 140px;
+    }
+
+    .anime-title {
+        font-size: 0.8rem;
+    }
+
+    .watch-btn {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px;
+    }
+}
+
+/* ====================================
+   🔹 tablets Desde 768px hasta 1023px
+==================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .anime-list {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .anime-img {
+        height: 180px;
+    }
+
+    .main-menu ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    body {
+        font-size: 15px;
+    }
+}

@@ -1,0 +1,461 @@
+/* ====================================
+   🔹 Variables de color
+==================================== */
+:root {
+    --primary-bg: #111111;      /* Fondo negro */
+    --secondary-bg: #1a1a1a;    /* Fondo gris oscuro */
+    --highlight-color: #e74c3c; /* Rojo para resaltar */
+    --text-color: #ffffff;      /* Blanco para el texto */
+    --light-text: #ddd;
+    --success-color: #4CAF50;   /* Verde para éxito */
+    --accent-color: #e74c3c;    /* Rojo acento */
+}
+
+/* ====================================
+   🔹 Estilos generales
+==================================== */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+/* Quitar subrayado de todos los enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ====================================
+   🔹 Header y Logo
+==================================== */
+.page-header {
+    background-color: var(--secondary-bg);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+}
+
+.page-header h1 {
+    margin: 0;
+    color: var(--highlight-color);
+}
+
+.page-header h1 a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--highlight-color);
+}
+
+/* ====================================
+   🔹 Menú principal
+==================================== */
+.main-menu {
+    background-color: var(--secondary-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Menú a la derecha */
+    align-items: center;
+    gap: 15px;
+}
+
+.main-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--highlight-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-menu li a:hover {
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+}
+
+/* Menú responsive */
+@media (max-width: 768px) {
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-menu li {
+        margin: 5px 0;
+    }
+}
+
+/* ====================================
+   🔹 Submenú usuario
+==================================== */
+.user-menu-item {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--secondary-bg);
+    border-radius: 6px;
+    min-width: 180px;
+    padding: 5px 0;
+    margin-top: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all 0.25s ease;
+}
+
+.user-menu-item:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown li a {
+    display: block;
+    padding: 10px 18px;
+    color: var(--highlight-color);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-dropdown li a:hover {
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+}
+
+.logout-separator a {
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ====================================
+   🔹 Footer
+==================================== */
+footer {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 25px 0;
+    border-top: 1px solid #444;
+}
+
+/* ====================================
+   🔹 Back to top
+==================================== */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 12px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:hover {
+    background-color: #e63232;
+    transform: translateY(-2px);
+}
+
+.back-to-top:focus {
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
+}
+
+/* ====================================
+   🔹 Smooth scroll
+==================================== */
+html {
+    scroll-behavior: smooth;
+}
+/* Contenedor buscador */
+.search-container {
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+/* Input de búsqueda */
+#searchInput {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid var(--highlight-color);
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+#searchInput::placeholder {
+    color: var(--light-text);
+}
+
+/* Botón de búsqueda */
+#searchBtn {
+    padding: 10px 15px;
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+    border: 2px solid var(--highlight-color);
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchBtn:hover {
+    background-color: #e63232;
+}
+
+/* Icono dentro del botón */
+#searchBtn i {
+    font-size: 1rem;
+}
+.h3 {
+    margin: 0;
+    color: var(--highlight-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* ====================================
+   🔹 ordenadores Hasta 1024px
+==================================== */
+
+@media (min-width: 1024px) {
+
+    .anime-list {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+    }
+
+    .anime-img {
+        height: 220px;
+    }
+
+    .main-menu ul {
+        justify-content: flex-end;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
+
+
+/* ====================================
+   🔹 Moviles Hasta 767px
+==================================== */
+@media (max-width: 767px) {
+
+    .page-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .anime-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .anime-img {
+        height: 140px;
+    }
+
+    .anime-title {
+        font-size: 0.8rem;
+    }
+
+    .watch-btn {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    body {
+        font-size: 14px;
+    }
+
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px;
+    }
+}
+
+/* ====================================
+   🔹 tablets Desde 768px hasta 1023px
+==================================== */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .anime-list {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 15px;
+    }
+
+    .anime-img {
+        height: 180px;
+    }
+
+    .main-menu ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    body {
+        font-size: 15px;
+    }
+}
+
+/* ====================================
+   🔹 Filtros
+==================================== */
+.filters {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    background-color: var(--secondary-bg);
+    border-radius: 10px;
+}
+
+/* Select normales */
+.filters select {
+    padding: 10px;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    border: 2px solid var(--highlight-color);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Botón filtrar */
+#btnFiltrar {
+    padding: 10px 18px;
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btnFiltrar:hover {
+    background-color: #e63232;
+}
+
+/* ====================================
+   🔹 Multi Select (Género / Año)
+==================================== */
+.multi-select {
+    position: relative;
+    min-width: 160px;
+}
+
+.select-box {
+    padding: 10px;
+    background-color: var(--primary-bg);
+    border: 2px solid var(--highlight-color);
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkboxes {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 220px;
+    max-height: 260px;
+    overflow-y: auto;
+    background-color: var(--secondary-bg);
+    border: 2px solid var(--highlight-color);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 999;
+}
+
+.multi-select:hover .checkboxes {
+    display: block;
+}
+
+.checkboxes label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.checkboxes input {
+    accent-color: var(--highlight-color);
+}
+
+/* Scroll bonito */
+.checkboxes::-webkit-scrollbar {
+    width: 6px;
+}
+
+.checkboxes::-webkit-scrollbar-thumb {
+    background-color: var(--highlight-color);
+    border-radius: 6px;
+}
+
+/* ====================================
+   🔹 Responsive filtros
+==================================== */
+@media (max-width: 767px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters select,
+    .select-box,
+    #btnFiltrar {
+        width: 100%;
+    }
+}

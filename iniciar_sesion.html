@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="DaiAnime.jpeg">
+    <link rel="stylesheet" href="iniciar_sesion.css">
+</head>
+
+<body>
+
+    <div class="form-container" style="z-index:999999999; margin-top: 50px;">
+
+        <div class="logo">
+            <h1>
+                <embed style="width:218px" src="DaiAnime.jpeg" alt="Playdede">
+            </h1>
+        </div>
+
+        <!-- LOGIN -->
+        <form
+            class="ajax-form active"
+            style="top: 130px;"
+            action="auth/login"
+            method="POST"
+            autocomplete="off"
+            data-form="login"
+        >
+            <h3 style="text-shadow: 0px 2px 2px #00000078;"></h3>
+
+            <input type="text" name="user" placeholder="Nombre de usuario" autocomplete="off">
+            <input type="password" name="pass" placeholder="Contraseña" autocomplete="off">
+
+            <a data-showform="forgot" style="text-shadow: 0px 2px 2px #00000078;">
+                ¿Has olvidado tu contraseña?
+            </a>
+
+            <div class="buttons">
+                <button type="button" data-showform="register">Registrarme</button>
+                <button type="submit">Iniciar sesión</button>
+            </div>
+
+            <br><br>
+        </form>
+
+        <!-- REGISTRO -->
+        <form
+            class="ajax-form"
+            style="top: 130px;"
+            action="auth/register"
+            method="POST"
+            autocomplete="off"
+            data-form="register"
+        >
+            <h3></h3>
+
+            <input type="text" name="user" placeholder="Nombre de usuario">
+            <input type="email" name="email" placeholder="Correo electrónico">
+            <input type="password" name="pass" placeholder="Contraseña">
+            <input type="password" name="confirm" placeholder="Vuelve a escribir la contraseña">
+
+            <div class="reCaptcha">
+                <div class="g-recaptcha" data-sitekey="6Lf54_QrAAAAAAgGCcBcqmaIT4x90XuVeYcejsoX"></div>
+                <div style="color:white; font-size:13px;">
+                    Al registrarte aceptas los
+                    <a style="text-decoration: underline;" target="_blank" href="/terminos-de-uso/">términos</a>
+                    y
+                    <a style="text-decoration: underline;" target="_blank" href="/politica-de-privacidad/">políticas</a>
+                    de DaiAnime
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" data-showform="login">Iniciar sesión</button>
+                <button type="submit">Registrarme</button>
+            </div>
+        </form>
+
+        <!-- RECUPERAR CONTRASEÑA -->
+        <form
+            class="ajax-form"
+            style="top: 130px;"
+            action="auth/forgot"
+            method="POST"
+            autocomplete="off"
+            data-form="forgot"
+        >
+            <h3></h3>
+
+            <input type="email" name="email" placeholder="Introduce tu correo" autocomplete="off">
+
+            <div class="reCaptcha">
+                <div class="g-recaptcha" data-sitekey="6Lf54_QrAAAAAAgGCcBcqmaIT4x90XuVeYcejsoX"></div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" data-showform="login">Iniciar sesión</button>
+                <button type="submit">Recuperar contraseña</button>
+            </div>
+        </form>
+
+        <!-- RESET PASSWORD -->
+        <form
+            class="ajax-form"
+            action="auth/reset"
+            method="POST"
+            autocomplete="off"
+            data-form="reset"
+        >
+            <h3>Cambiar contraseña</h3>
+
+            <input type="hidden" name="token" value="">
+            <input type="password" name="new" placeholder="Nueva contraseña deseada">
+            <input type="password" name="confirm" placeholder="Vuelve a escribir la contraseña">
+
+            <div class="buttons">
+                <button type="submit">Cambiar contraseña</button>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const forms = document.querySelectorAll(".ajax-form");
+    const buttons = document.querySelectorAll("[data-showform]");
+
+    function showForm(name) {
+        forms.forEach(form => {
+            form.classList.remove("active");
+            if (form.dataset.form === name) {
+                form.classList.add("active");
+            }
+        });
+    }
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            showForm(button.getAttribute("data-showform"));
+        });
+    });
+
+    /* ========= LOGIN ========= */
+    document.querySelector('[data-form="login"]').addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const user = this.querySelector('input[name="user"]').value.trim();
+        const pass = this.querySelector('input[name="pass"]').value.trim();
+
+        if (!user || !pass) {
+            alert("Completa todos los campos");
+            return;
+        }
+
+        localStorage.setItem("logueado", "true");
+        localStorage.setItem("usuario", user);
+        window.location.href = "index.html";
+    });
+
+    /* ========= REGISTRO ========= */
+    document.querySelector('[data-form="register"]').addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const user = this.querySelector('input[name="user"]').value.trim();
+        const email = this.querySelector('input[name="email"]').value.trim();
+        const pass = this.querySelector('input[name="pass"]').value;
+        const confirm = this.querySelector('input[name="confirm"]').value;
+
+        if (!user || !email || !pass || !confirm) {
+            alert("Completa todos los campos");
+            return;
+        }
+
+        if (pass !== confirm) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
+
+        localStorage.setItem("usuario", user);
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", pass); // ⚠️ solo simulado
+
+        alert("Registro exitoso. Ahora inicia sesión.");
+        showForm("login");
+    });
+
+    /* ========= RECUPERAR CONTRASEÑA ========= */
+    document.querySelector('[data-form="forgot"]').addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const email = this.querySelector('input[name="email"]').value.trim();
+        const savedEmail = localStorage.getItem("email");
+
+        if (!email) {
+            alert("Introduce tu correo");
+            return;
+        }
+
+        if (email !== savedEmail) {
+            alert("Este correo no está registrado");
+            return;
+        }
+
+        // Simular token
+        const token = Math.random().toString(36).substr(2);
+        localStorage.setItem("reset_token", token);
+
+        alert("Hemos enviado un enlace de recuperación (simulado)");
+
+        // Pasar al formulario RESET
+        document.querySelector('[data-form="reset"] input[name="token"]').value = token;
+        showForm("reset");
+    });
+
+    /* ========= RESET PASSWORD ========= */
+    document.querySelector('[data-form="reset"]').addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const newPass = this.querySelector('input[name="new"]').value;
+        const confirm = this.querySelector('input[name="confirm"]').value;
+        const token = this.querySelector('input[name="token"]').value;
+
+        if (!newPass || !confirm) {
+            alert("Completa todos los campos");
+            return;
+        }
+
+        if (newPass !== confirm) {
+            alert("Las contraseñas no coinciden");
+            return;
+        }
+
+        if (token !== localStorage.getItem("reset_token")) {
+            alert("Token inválido");
+            return;
+        }
+
+        // Guardar nueva contraseña (simulado)
+        localStorage.setItem("password", newPass);
+        localStorage.removeItem("reset_token");
+
+        alert("Contraseña cambiada correctamente");
+        showForm("login");
+    });
+});
+</script>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar</title>
+    <link rel="stylesheet" href="Buscar.css">
+    <link rel="icon" type="image/png" href="DaiAnime.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+   <header class="page-header">
+<h1>
+  <a href="index.html">
+    <img src="DaiAnime.jpeg" alt="Logo de DaiAnime" style="height:40px; vertical-align:middle;">
+    DaiAnime
+  </a>
+</h1> 
+ <nav class="main-menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="Buscar.html">Buscar</a></li>            
+              <li class="user-menu-item">
+                <a href="#" class="user-link" id="userName">Usuario</a>
+                <ul class="user-dropdown">
+                    <li><a href="Mi_lista.html">Mi Lista</a></li>
+                    <li class="logout-separator">
+                        <a href="#" id="logout">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+<h3 class="h3">Listas de Animes</h3>
+<!-- Buscador -->
+<div class="search-container">
+    <input type="text" placeholder="Buscar anime..." id="searchInput">
+    <button id="searchBtn"><i class="fas fa-search"></i></button>
+</div>
+<div class="filters">
+
+  <div class="multi-select" id="multiGenero">
+    <div class="select-box">Género</div>
+    <div class="checkboxes">
+      <label><input type="checkbox" value="Acción"> Acción</label>
+      <label><input type="checkbox" value="Aventura"> Aventura</label>
+      <label><input type="checkbox" value="Comedia"> Comedia</label>
+      <label><input type="checkbox" value="Drama"> Drama</label>
+      <label><input type="checkbox" value="Fantasía"> Fantasía</label>
+      <label><input type="checkbox" value="Ciencia Ficción"> Ciencia Ficción</label>
+      <label><input type="checkbox" value="Romance"> Romance</label>
+      <label><input type="checkbox" value="Misterio"> Misterio</label>
+      <label><input type="checkbox" value="Terror"> Terror</label>
+      <label><input type="checkbox" value="Superpoderes"> Superpoderes</label>
+      <label><input type="checkbox" value="Deportes"> Deportes</label>
+      <label><input type="checkbox" value="Música"> Música</label>
+      <label><input type="checkbox" value="Psicológico"> Psicológico</label>
+      <label><input type="checkbox" value="Slice of Life"> Slice of Life</label>
+      <label><input type="checkbox" value="Mecha"> Mecha</label>
+      <label><input type="checkbox" value="Histórico"> Histórico</label>
+      <label><input type="checkbox" value="Escolar"> Escolar</label>
+      <label><input type="checkbox" value="Isekai"> Isekai</label>
+    </div>
+  </div>
+
+  <div class="multi-select" id="multiYear">
+    <div class="select-box">Año</div>
+    <div class="checkboxes">
+      <label><input type="checkbox" value="2026"> 2026</label>
+      <label><input type="checkbox" value="2025"> 2025</label>
+      <label><input type="checkbox" value="2024"> 2024</label>
+      <label><input type="checkbox" value="2023"> 2023</label>
+      <label><input type="checkbox" value="2022"> 2022</label>
+      <label><input type="checkbox" value="2021"> 2021</label>
+      <label><input type="checkbox" value="2020"> 2020</label>
+      <label><input type="checkbox" value="2019"> 2019</label>
+      <label><input type="checkbox" value="2018"> 2018</label>
+      <label><input type="checkbox" value="2017"> 2017</label>
+      <label><input type="checkbox" value="2016"> 2016</label>
+      <label><input type="checkbox" value="2015"> 2015</label>
+      <label><input type="checkbox" value="2014"> 2014</label>
+      <label><input type="checkbox" value="2013"> 2013</label>
+      <label><input type="checkbox" value="2012"> 2012</label>
+      <label><input type="checkbox" value="2011"> 2011</label>
+      <label><input type="checkbox" value="2010"> 2010</label>
+      <label><input type="checkbox" value="2009"> 2009</label>
+      <label><input type="checkbox" value="2008"> 2008</label>
+      <label><input type="checkbox" value="2007"> 2007</label>
+      <label><input type="checkbox" value="2006"> 2006</label>
+      <label><input type="checkbox" value="2005"> 2005</label>
+      <label><input type="checkbox" value="2004"> 2004</label>
+      <label><input type="checkbox" value="2003"> 2003</label>
+      <label><input type="checkbox" value="2002"> 2002</label>
+      <label><input type="checkbox" value="2001"> 2001</label>
+      <label><input type="checkbox" value="2000"> 2000</label>
+      <label><input type="checkbox" value="1999"> 1999</label>
+      <label><input type="checkbox" value="1998"> 1998</label>
+      <label><input type="checkbox" value="1997"> 1997</label>
+      <label><input type="checkbox" value="1996"> 1996</label>
+      <label><input type="checkbox" value="1995"> 1995</label>
+      <label><input type="checkbox" value="1993"> 1993</label>
+      <label><input type="checkbox" value="1992"> 1992</label>
+      <label><input type="checkbox" value="1989"> 1989</label>
+      <label><input type="checkbox" value="1988"> 1988</label>
+      <label><input type="checkbox" value="1986"> 1986</label>
+      <label><input type="checkbox" value="1985"> 1985</label>
+    </div>
+  </div>
+
+  <select id="filterTipo">
+    <option value="Todos">Tipo: Todos</option>
+    <option value="TV">TV</option>
+    <option value="Movie">Movie</option>
+    <option value="OVA">OVA</option>
+    <option value="ONA">ONA</option>
+  </select>
+
+  <select id="filterEstado">
+    <option value="Todos">Estado: Todos</option>
+    <option value="Emisión">Emisión</option>
+    <option value="Finalizado">Finalizado</option>
+  </select>
+
+  <select id="filterOrden">
+    <option value="Por Defecto">Orden: Por Defecto</option>
+    <option value="A-Z">A-Z</option>
+    <option value="Z-A">Z-A</option>
+    <option value="Más Recientes">Más Recientes</option>
+    <option value="Más Antiguos">Más Antiguos</option>
+  </select>
+
+  <button id="btnFiltrar">FILTRAR</button>
+</div>
+
+<div id="anime-grid" class="anime-grid"></div>
+<div id="pagination" class="pagination"></div>
+
+</body>
+<footer>
+    <p>© 2026 DaiAnime. Todos los derechos reservados.</p>
+</footer>
