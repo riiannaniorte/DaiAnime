@@ -87,36 +87,5 @@
    <i class="fas fa-arrow-up"></i>
  </button>
 </body>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    // 🔐 PROTEGER PÁGINA
-    if (localStorage.getItem("logueado") !== "true") {
-        window.location.href = "iniciar_sesion.html";
-        return;
-    }
-
-    // 👤 MOSTRAR USUARIO
-    const userName = document.getElementById("userName");
-    const usuario = localStorage.getItem("usuario");
-    if (userName && usuario) {
-        userName.textContent = usuario;
-    }
-
-    // 🚪 CERRAR SESIÓN
-    const logoutBtn = document.getElementById("logout");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            localStorage.removeItem("logueado");
-            localStorage.removeItem("usuario");
-            window.location.href = "iniciar_sesion.html";
-        });
-    }
-
-});
-</script>
-
-
 
 </html>
