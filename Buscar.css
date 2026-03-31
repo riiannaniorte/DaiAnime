@@ -1,0 +1,393 @@
+:root {
+    --primary-bg: #111;
+    --secondary-bg: #1a1a1a;
+    --highlight-color: #e74c3c;
+    --text-color: #fff;
+    --light-text: #bbb;
+    --border-color: #333;
+    text-decoration: none;
+}
+
+/* Body */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+}
+
+/* ====================================
+   🔹 Header y Logo
+==================================== */
+.page-header {
+    background-color: var(--secondary-bg);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Logo a la izquierda, menú a la derecha */
+}
+
+.page-header h1 {
+    margin: 0;
+    color: var(--highlight-color);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.page-header h1 a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--highlight-color);
+}
+
+/* ====================================
+   🔹 Menú principal
+==================================== */
+.main-menu {
+    background-color: var(--secondary-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end; /* Menú a la derecha */
+    align-items: center;
+    gap: 15px;
+}
+
+.main-menu li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--highlight-color);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-menu li a:hover {
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+}
+
+/* Menú responsive */
+@media (max-width: 768px) {
+    .main-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-menu li {
+        margin: 5px 0;
+    }
+}
+
+/* ====================================
+   🔹 Submenú usuario
+==================================== */
+.user-menu-item {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--secondary-bg);
+    border-radius: 6px;
+    min-width: 180px;
+    padding: 5px 0;
+    margin-top: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    text-decoration: none;
+    transform: translateY(8px);
+    transition: all 0.25s ease;
+}
+
+.user-menu-item:hover .user-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-dropdown li a {
+    display: block;
+    padding: 10px 18px;
+    color: var(--highlight-color);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-dropdown li a:hover {
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+}
+
+.logout-separator a {
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+/* Buscador y filtros */
+.search-filters-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin: 20px auto;
+    padding: 15px;
+    max-width: 1200px;
+    background-color: var(--secondary-bg);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+#searchInput {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 2px solid var(--highlight-color);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.filters select, .search-filters-form select {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 2px solid var(--highlight-color);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    min-width: 140px;
+}
+
+/* Multi select */
+.multi-select {
+    position: relative;
+    flex-shrink: 0;
+    height: 40px;
+}
+
+.select-box {
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 2px solid var(--highlight-color);
+    background-color: var(--primary-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    min-width: 120px;
+    position: relative;
+    user-select: none;
+}
+
+.select-box::after {
+    content: "▼";
+    font-size: 0.7rem;
+    margin-left: 8px;
+    color: var(--highlight-color);
+}
+
+.checkboxes {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 220px;
+    max-height: 250px;
+    overflow-y: auto;
+    background-color: var(--secondary-bg);
+    border-radius: 6px;
+    border: 2px solid var(--highlight-color);
+    padding: 12px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.multi-select:hover .checkboxes { 
+    display: block; 
+}
+
+.checkboxes label { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 0.85rem;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.checkboxes label:hover {
+    color: var(--highlight-color);
+}
+
+.checkboxes input { 
+    accent-color: var(--highlight-color);
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+#btnFiltrar {
+    padding: 10px 25px;
+    border-radius: 6px;
+    border: none;
+    background-color: var(--highlight-color);
+    color: var(--primary-bg);
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.3s;
+    height: 40px;
+    flex-shrink: 0;
+    min-width: 100px;
+}
+
+#btnFiltrar:hover { 
+    background-color: #ff5a4a;
+    transform: translateY(-2px);
+}
+
+
+/* ===========================
+   ESTILO DE TARJETAS
+   =========================== */
+
+/* Contenedor principal */
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    padding: 20px;
+}
+
+
+/* Tarjeta estilo animeflv */
+.anime-card {
+    flex: 0 0 calc(25% - 15px); /* 4 tarjetas por fila en escritorio con 20px de gap */
+    min-width: 100px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 12px; /* Más redondeado */
+    padding: 12px;
+    text-align: flex-start;
+    font-size: 0.9rem;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border: 1px solid transparent; /* Borde inicial transparente */
+}
+
+.anime-card:hover {
+    transform: translateY(-7px); /* Mayor elevación */
+    box-shadow: 0px 8px 25px rgba(0,0,0,0.5); /* Sombra más pronunciada */
+    border: 1px solid var(--accent-color); /* Borde al pasar el mouse */
+}
+
+/* Imagen */
+.anime-card img {
+     width: 100%;
+    align-items: center;
+    height: 220px; 
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px; 
+}
+
+/* Detalles del anime */
+.anime-details {
+    flex: 1;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+/* Título */
+.anime-card h4 {
+     font-size: 1.1rem;
+    margin: 5px 0;
+    color: var(--light-text);
+}
+
+/* Texto descriptivo */
+.anime-details p {
+   font-size: 0.85rem;
+    margin: 5px 0 10px;
+    color: var(--light-text);
+}
+
+/* Contenedor de botones */
+.anime-details .botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* Botón Guardar */
+.save-button {
+    padding: 6px 14px;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.save-button:hover {
+    background: #c0392b;
+}
+
+/* Botón Favorito */
+.favorite-button {
+    padding: 6px 14px;
+    background: #e74c3c;
+    color: #000;
+    font-size: 0.85rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.favorite-button:hover {
+    background: #c0392b;
+}
+
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--light-text);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+}
